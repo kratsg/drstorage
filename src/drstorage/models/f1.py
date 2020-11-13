@@ -35,3 +35,4 @@ F1_600 = Struct(
     Const(b"\x0d\x0a"),
     Terminated,
 )
+F1_600.size = 31
