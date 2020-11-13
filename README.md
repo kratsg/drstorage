@@ -6,6 +6,28 @@
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/kratsg/drstorage/master.svg)](https://results.pre-commit.ci/latest/github/kratsg/drstorage/master)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
+## Using
+
+From python
+
+```python
+>>> import drstorage
+>>> data = bytearray.fromhex("abab00471200c5120901000000000000000a10025810000000000000140d0a")
+>>> result = drstorage.models.F1_600.parse(data)
+>>> print(result)
+Container:
+    humidity = 7.1
+    temperature = 19.7
+
+```
+
+or from command line
+
+```bash
+$ python -c 'import sys; sys.stdout.buffer.write(bytes(bytearray.fromhex("abab00471200c5120901000000000000000a10025810000000000000140d0a")))' | drstorage parse --model F1_600
+Container:     humidity = 7.1    temperature = 19.7
+```
+
 ## Installation
 
 In a fresh virtual environment
