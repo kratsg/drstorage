@@ -26,9 +26,7 @@ def drstorage():
 )
 def parse(bytestream, model_name):
     model = getattr(models, model_name)
-    while True:
+    line = bytestream.read(model.size)
+    while line:
+        click.echo(str(model.parse(line)).replace("\n", ""))
         line = bytestream.read(model.size)
-        if line:
-            click.echo(str(model.parse(line)).replace("\n", ""))
-        else:
-            break
