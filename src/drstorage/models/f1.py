@@ -8,7 +8,6 @@ from construct import (
     Computed,
     Checksum,
     Terminated,
-    Probe,
 )
 
 F1_600 = Struct(
