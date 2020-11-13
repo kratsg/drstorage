@@ -46,7 +46,6 @@ $ python -m pip install .
 ## Contributing
 
 As this library is experimental contributions of all forms are welcome.
-If you have ideas on how to improve the API or conceptually how a library meant to introduce people to the Scikit-HEP ecosystem should be structured please open an Issue.
 You are of course also most welcome and encouraged to open PRs.
 
 ### Developing
