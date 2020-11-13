@@ -22,7 +22,7 @@ F1_600 = Struct(
             Const(b"\x12"),
             "raw_humidity_precise" / Int16ub,
             Padding(7),
-            "_test" / Const(b"\x0a"),
+            Const(b"\x0a"),
             Const(b"\x10\x02"),
             Const(b"\x58\x10"),
             Padding(6),
