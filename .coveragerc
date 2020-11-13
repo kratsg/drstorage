@@ -1,6 +1,6 @@
 [run]
 branch = True
-source = src/heputils
+source = src/drstorage
 
 [report]
 exclude_lines =
