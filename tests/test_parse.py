@@ -10,4 +10,7 @@ def data():
 
 
 def test_parse(data):
-    assert drstorage.F1_600.parse(data)
+    result = drstorage.models.F1_600.parse(data)
+    assert result
+    assert result.temperature == 19.7
+    assert result.humidity == 7.1
