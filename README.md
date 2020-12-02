@@ -28,6 +28,12 @@ $ python -c 'import sys; sys.stdout.buffer.write(bytes(bytearray.fromhex("abab00
 Container:     humidity = 7.1    temperature = 19.7
 ```
 
+### Supported Models
+
+- `generic` (the "base" Dr. Storage model)
+- `F1_600`
+- `X2M_157`
+
 ## Installation
 
 In a fresh virtual environment
