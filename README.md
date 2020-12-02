@@ -18,6 +18,7 @@ From python
 Container:
     humidity = 7.1
     temperature = 19.7
+    model = 600
 
 ```
 
@@ -25,12 +26,12 @@ or from command line
 
 ```bash
 $ python -c 'import sys; sys.stdout.buffer.write(bytes(bytearray.fromhex("abab00471200c5120901000000000000000a10025810000000000000140d0a")))' | drstorage parse --model F1_600
-Container:     humidity = 7.1    temperature = 19.7
+Container:     humidity = 7.1    temperature = 19.7    model = 600
 ```
 
 ### Supported Models
 
-- `generic` (the "base" Dr. Storage model)
+- `generic` (default, the "base" Dr. Storage model)
 - `F1_600`
 - `X2M_157`
 
