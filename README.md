@@ -83,3 +83,4 @@ pre-commit install
 * James Tranovich
 * Anja Berens
 * Paul Ingemi
+* Matthew Gignac
