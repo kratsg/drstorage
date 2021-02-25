@@ -8,6 +8,7 @@ from construct import (
     Computed,
     Checksum,
     Terminated,
+    OneOf,
 )
 
 
@@ -19,7 +20,7 @@ def DrStorageFactory(model_number=None):
             Struct(
                 Const(b"\xab\xab"),
                 "raw_humidity" / Int16ub,
-                Const(b"\x12"),
+                OneOf(Bytes(1), [b"\x12", b"\x10"]),
                 "raw_temperature" / Int16ub,
                 Const(b"\x12"),
                 "raw_humidity_precise" / Int16ub,
