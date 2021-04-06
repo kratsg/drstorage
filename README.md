@@ -33,6 +33,7 @@ Container:     humidity = 7.1    temperature = 19.7    model = 600
 
 - `generic` (default, the "base" Dr. Storage model)
 - `F1_600`
+- `F1_1200`
 - `X2M_157`
 
 ## Installation
