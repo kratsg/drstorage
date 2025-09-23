@@ -15,7 +15,7 @@ jobs:
     name: Build and publish Python distro to (Test)PyPI
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 0
     - name: Set up Python 3.8
@@ -43,8 +43,8 @@ jobs:
           if [[ "${wheel_name}" == *"drstorage-0.1.dev"* || "${wheel_name}" != *"dev"* ]]; then
             echo "python-build incorrectly named built distribution: ${wheel_name}"
             echo "python-build is lacking the history and tags required to determine version number"
-            echo "intentionally erroring with 'return 1' now"
-            return 1
+            echo "intentionally erroring with 'exit 1' now"
+            exit 1
           fi
         else
           echo "Push event to origin/master was triggered by push of tag ${latest_tag}"
@@ -57,8 +57,8 @@ jobs:
         if [[ "${wheel_name}" == *"dev"* ]]; then
           echo "python-build incorrectly named built distribution: ${wheel_name}"
           echo "this is incorrrectly being treated as a dev release"
-          echo "intentionally erroring with 'return 1' now"
-          return 1
+          echo "intentionally erroring with 'exit 1' now"
+          exit 1
         fi
         echo "python-build named built distribution: ${wheel_name}"
     - name: Verify the distribution
