@@ -1,7 +1,99 @@
 [build-system]
-# Minimum requirements for the build system to execute.
-requires = ["wheel", "setuptools>=30.3.0", "attrs>=17.1", "setuptools_scm"]
-build-backend = "setuptools.build_meta"
+requires = [
+    "hatchling>=1.13.0",
+    "hatch-vcs>=0.3.0",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "drstorage"
+dynamic = ["version"]
+description = "Protocol Parser for Dr. Storage Dry Air Cabinets"
+authors = [{name = "Giordon Stark", email = "gstark@cern.ch"}]
+license = {text = "BSD 3-Clause"}
+keywords = ["hep utilities physics protocol struct drstorage dry air cabinet"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: Apache Software License",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Interface Engine/Protocol Translator",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: System :: Hardware",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "click>=7.0",
+    "construct>=2.10",
+]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.urls]
+Homepage = "https://github.com/kratsg/drstorage"
+Documentation = "https://kratsg.github.io/drstorage/"
+Source = "https://github.com/kratsg/drstorage"
+Tracker = "https://github.com/kratsg/drstorage/issues"
+
+[project.optional-dependencies]
+lint = ["black", "flake8"]
+test = [
+    "check-manifest",
+    "pytest-console-scripts~=0.2",
+    "pytest-cov~=2.8",
+    "pytest-mock~=3.0",
+    "pytest~=6.0",
+]
+develop = [
+    "black",
+    "bump2version",
+    "check-manifest",
+    "flake8",
+    "pre-commit",
+    "pytest-console-scripts~=0.2",
+    "pytest-cov~=2.8",
+    "pytest-mock~=3.0",
+    "pytest~=6.0",
+    "twine",
+]
+complete = [
+    "black",
+    "bump2version",
+    "check-manifest",
+    "flake8",
+    "pre-commit",
+    "pytest-console-scripts~=0.2",
+    "pytest-cov~=2.8",
+    "pytest-mock~=3.0",
+    "pytest~=6.0",
+    "twine",
+]
+
+[project.scripts]
+drstorage = "drstorage.cli:cli"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.version.raw-options]
+local_scheme = "no-local-version"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/drstorage/_version.py"
+
+[tool.build_sphinx]
+project = "drstorage"
+source-dir = "docs"
+build-dir = "docs/_build"
+all-files = "1"
+warning-is-error = "1"
 
 [tool.black]
 line-length = 88
