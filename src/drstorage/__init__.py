@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from . import models
-from .version import __version__
+from ._version import __version__
 
 # Satisfy pyflakes
 __all__ = ["__version__", "models"]
