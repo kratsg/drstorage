@@ -1,14 +1,16 @@
+from __future__ import annotations
+
 from construct import (
-    Struct,
-    RawCopy,
     Bytes,
+    Checksum,
+    Computed,
     Const,
     Int16ub,
-    Padding,
-    Computed,
-    Checksum,
-    Terminated,
     OneOf,
+    Padding,
+    RawCopy,
+    Struct,
+    Terminated,
 )
 
 

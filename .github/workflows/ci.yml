@@ -5,38 +5,53 @@ on:
   pull_request:
   # Run daily at 0:01 UTC
   schedule:
-  - cron:  '1 0 * * *'
+    - cron: "1 0 * * *"
 
 jobs:
-  test:
+  pre-commit:
+    name: Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12" # should be 3.x
+      - uses: pre-commit/action@v3.0.1
+        with:
+          extra_args: --hook-stage manual --all-files
 
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest]
-        python-version: ['3.8', '3.9', '3.10']
+        python-version: ["3.8", "3.9", "3.10"]
 
     steps:
-    - uses: actions/checkout@v5
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v6
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip setuptools wheel
-        python -m pip install -q -e .[complete]
-        python -m pip list
-    - name: Check MANIFEST
-      if: matrix.python-version == 3.8 && matrix.os == 'ubuntu-latest'
-      run: |
-        check-manifest
-    - name: Test with pytest
-      run: |
-        python -m pytest -r sx
-    - name: Report coverage with Codecov
-      if: github.event_name == 'push' && matrix.python-version == 3.8 && matrix.os == 'ubuntu-latest'
-      uses: codecov/codecov-action@v5
-      with:
-        file: ./coverage.xml
-        flags: unittests
+      - uses: actions/checkout@v5
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -q -e .[complete]
+          python -m pip list
+      - name: Check MANIFEST
+        if: matrix.python-version == 3.8 && matrix.os == 'ubuntu-latest'
+        run: |
+          check-manifest
+      - name: Test with pytest
+        run: |
+          python -m pytest -r sx
+      - name: Report coverage with Codecov
+        if:
+          github.event_name == 'push' && matrix.python-version == 3.8 &&
+          matrix.os == 'ubuntu-latest'
+        uses: codecov/codecov-action@v5
+        with:
+          file: ./coverage.xml
+          flags: unittests

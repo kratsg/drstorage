@@ -10,9 +10,11 @@
 
 From python
 
-```python
+```pycon
 >>> import drstorage
->>> data = bytearray.fromhex("abab00471200c5120901000000000000000a10025810000000000000140d0a")
+>>> data = bytearray.fromhex(
+...     "abab00471200c5120901000000000000000a10025810000000000000140d0a"
+... )
 >>> result = drstorage.models.F1_600.parse(data)
 >>> print(result)
 Container:
@@ -45,7 +47,9 @@ $ python -m pip install "git+https://github.com/kratsg/drstorage.git"
 ```
 
 The above is actually cloning and installing directly from the Git repository.
-However, if you want to, you can of course also install it directly from the Git repository "locally" by first cloning the repo and then from the top level of it running
+However, if you want to, you can of course also install it directly from the Git
+repository "locally" by first cloning the repo and then from the top level of it
+running
 
 ```
 $ python -m pip install .
@@ -53,13 +57,13 @@ $ python -m pip install .
 
 ## Contributing
 
-As this library is experimental contributions of all forms are welcome.
-You are of course also most welcome and encouraged to open PRs.
+As this library is experimental contributions of all forms are welcome. You are
+of course also most welcome and encouraged to open PRs.
 
 ### Developing
 
-To develop, use a virtual environment.
-Once the environment is activated, clone the repo from GitHub
+To develop, use a virtual environment. Once the environment is activated, clone
+the repo from GitHub
 
 ```
 git clone git@github.com:kratsg/drstorage.git
@@ -79,10 +83,10 @@ pre-commit install
 
 ## Acknowledgements
 
-* Mike Hance
-* Noah Peake
-* Will Johansson
-* James Tranovich
-* Anja Berens
-* Paul Ingemi
-* Matthew Gignac
+- Mike Hance
+- Noah Peake
+- Will Johansson
+- James Tranovich
+- Anja Berens
+- Paul Ingemi
+- Matthew Gignac

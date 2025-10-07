@@ -1,12 +1,15 @@
+from __future__ import annotations
+
 import shlex
-import drstorage
-import time
 import subprocess
+import time
+
 import pytest
+
+import drstorage
 
 
 @pytest.fixture(
-    scope="function",
     params=[
         (
             "F1_600",

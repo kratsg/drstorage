@@ -1,5 +1,8 @@
-import drstorage
+from __future__ import annotations
+
 import pytest
+
+import drstorage
 
 testdata = {
     "F1_600": [
@@ -39,7 +42,7 @@ testdata = {
 }
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def data():
     return testdata
 
@@ -72,9 +75,9 @@ def test_parse_F1_1200():
 
 
 def test_parse_X2M_157(data):
-    dataset = testdata["X2M_157"]
-    for data in dataset:
-        result = drstorage.models.X2M_157.parse(data["data"])
+    datasets = data["X2M_157"]
+    for dataset in datasets:
+        result = drstorage.models.X2M_157.parse(dataset["data"])
         assert result
-        assert result.temperature == data["temperature"]
-        assert result.humidity == data["humidity"]
+        assert result.temperature == dataset["temperature"]
+        assert result.humidity == dataset["humidity"]
