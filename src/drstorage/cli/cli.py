@@ -5,7 +5,7 @@ import logging
 import click
 
 from .. import models
-from ..version import __version__
+from .._version import __version__
 
 logging.basicConfig()
 log = logging.getLogger(__name__)
