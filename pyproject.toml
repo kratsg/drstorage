@@ -45,7 +45,6 @@ Tracker = "https://github.com/kratsg/drstorage/issues"
 [project.optional-dependencies]
 lint = ["black", "flake8"]
 test = [
-    "check-manifest",
     "pytest-console-scripts~=0.2",
     "pytest-cov~=2.8",
     "pytest-mock~=3.0",
@@ -54,7 +53,6 @@ test = [
 develop = [
     "black",
     "bump2version",
-    "check-manifest",
     "flake8",
     "pre-commit",
     "pytest-console-scripts~=0.2",
@@ -66,7 +64,6 @@ develop = [
 complete = [
     "black",
     "bump2version",
-    "check-manifest",
     "flake8",
     "pre-commit",
     "pytest-console-scripts~=0.2",
@@ -128,13 +125,3 @@ ignore = [
 ]
 isort.required-imports = ["from __future__ import annotations"]
 #typing-modules = ["pyhs3.typing_compat"]
-
-[tool.check-manifest]
-ignore = [
-    'examples/**',
-    'tests/**',
-    '.*',
-    'pyproject.toml',
-    'pytest.ini',
-    'CODE_OF_CONDUCT.md',
-]

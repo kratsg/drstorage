@@ -22,16 +22,13 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: 3.8
-      - name: Install python-build, check-manifest, and twine
+      - name: Install python-build and twine
         run: |
           python -m pip install --upgrade pip setuptools wheel
-          python -m pip install build check-manifest twine
+          python -m pip install build twine
       - name: Build a wheel and a sdist
         run: |
           python -m build --sdist --wheel --outdir dist/ .
-      - name: Check MANIFEST
-        run: |
-          check-manifest
       - name: Verify untagged commits have dev versions
         if: "!startsWith(github.ref, 'refs/tags/')"
         run: |
