@@ -47,7 +47,7 @@ jobs:
         if:
           github.event_name == 'push' && matrix.python-version == 3.8 &&
           matrix.os == 'ubuntu-latest'
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         with:
           file: ./coverage.xml
           flags: unittests
