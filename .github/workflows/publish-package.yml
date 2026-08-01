@@ -19,7 +19,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Set up Python 3.8
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: 3.8
       - name: Install python-build and twine
@@ -65,7 +65,7 @@ jobs:
         if:
           github.event_name == 'push' && github.ref == 'refs/heads/master' &&
           github.repository == 'kratsg/drstorage'
-        uses: pypa/gh-action-pypi-publish@v1.14.0
+        uses: pypa/gh-action-pypi-publish@v1.14.2
         with:
           password: ${{ secrets.test_pypi_password }}
           repository_url: https://test.pypi.org/legacy/
@@ -73,6 +73,6 @@ jobs:
         if:
           github.event_name == 'push' && startsWith(github.ref, 'refs/tags') &&
           github.repository == 'kratsg/drstorage'
-        uses: pypa/gh-action-pypi-publish@v1.14.0
+        uses: pypa/gh-action-pypi-publish@v1.14.2
         with:
           password: ${{ secrets.pypi_password }}
