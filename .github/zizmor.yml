@@ -1,0 +1,9 @@
+rules:
+  use-trusted-publishing:
+    ignore:
+      # Migrating to PyPI Trusted Publishing requires the maintainer to first
+      # register this repository/workflow as a trusted publisher on
+      # pypi.org and test.pypi.org. That's an account-level change outside
+      # this repo, so we keep the existing password-based publish steps for
+      # now and flag this as a follow-up.
+      - publish-package.yml
